@@ -1,0 +1,25 @@
+.service-card{
+    height: 500px;
+    width: 350px;
+    /* background-image: linear-gradient(white, rgb(24, 65, 58)); */
+
+  background-image: linear-gradient(gray, white);
+  border-radius: 10px;
+  border: 1px solid rgb(168, 167, 167);
+}
+.service-card img:hover{
+    padding:15px;
+    transform:scale(1.1);
+transition: transform 1s;
+border-radius: 10px;
+
+}
+.service-card img{
+    width: 100%;
+}
+.service-card:hover{
+background-image: linear-gradient(white, rgb(108, 148, 141));
+  color: white;
+  border-radius: 0px;
+
+}

@@ -1,31 +1,43 @@
 [
     {
       "name": "Comfortable Tents",
+      "id": "1",
+      "price":"550",
       "desc": "We’ve all been there. After a seemingly endless winter springtime arrives, the weather warms up and you start your summer camping plans only to find out all the places you want.",
       "img": "https://kamperen.qodeinteractive.com/wp-content/uploads/2021/06/accommodation-singe-1-img-3.jpg"
     },
     {
-      "name": "Camping Area For Tents",
+      "name": "Camping Area ",
+      "id": "2",
+      "price":"670",
       "desc": "Situated in Mozirje in the Savinjska region and Golte Ski Area reachable within 16 km, Forest Camping Mozirje features accommodation with free WiFi, a children's playground.",
       "img": "https://kamperen.qodeinteractive.com/wp-content/uploads/2021/06/mian-img-1.jpg"
     },
     {
-      "name": "Camper Van Holiday",
+      "name": "Camper Van ",
+      "id": "3",
+      "price":"850",
       "desc": "Picking your next camper van might be a confusing deal. There are several camper van brands, but how to select the best is the ultimate question. Don’t worry, I got you covered.",
       "img": "https://kamperen.qodeinteractive.com/wp-content/uploads/2021/06/Blog-img-1.jpg"
     },
     {
       "name": "MotorHome",
+      "id": "4",
+      "price":"650",
       "desc": "Have you considered earning money when you don't use your RV? List your vehicle for free and rent it out whenever you want to.",
       "img": "https://kamperen.qodeinteractive.com/wp-content/uploads/2021/06/home-5-acc-2.jpg"
     },
     {
-      "name": "Sea Beach Camping",
+      "name": "Sea Beach ",
+      "id": "5",
+      "price":"356",
       "desc": "The Paradise Beach Camping is just 50 m from the golden sands of the famous Paradise Beach. The island’s biggest nightclub.",
       "img": "https://www.kernowchocolate.co.uk/wp-content/uploads/Screen-Shot-2018-03-28-at-11.58.53-1.png"
     },
     {
       "name": "Self Camping",
+      "id": "6",
+      "price":"700",
       "desc": "These 6 best camping spots are present around Delhi NCR, enjoy this activity with your BG Life",
       "img": "https://navbharattimes.indiatimes.com/photo/msid-85367729,imgsize-412370/pic.jpg"
     }

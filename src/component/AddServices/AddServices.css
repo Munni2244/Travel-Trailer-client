@@ -1,0 +1,11 @@
+.formStyle form input{
+    margin-top: 15px;
+    width: 400px;
+    padding: 5px;
+}
+.formStyle{
+    background-color: rgb(23, 58, 55);
+    border: 1px solid;
+    width: 500px;
+    color: white;
+}
