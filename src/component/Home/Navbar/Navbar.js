@@ -21,21 +21,20 @@ const Navbar = () => {
         <li className="nav-item">
           <Link to="/addServices" className="nav-link active ">AddServices</Link>
         </li>
-        <li className="nav-item">
+      </ul>
+      <form className="d-flex">
+        {user.email &&  <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <li className="nav-item">
           <Link to="/mybooking" className="nav-link active" href="#">My Booking</Link>
         </li>
         <li className="nav-item">
           <Link to="/manage" className="nav-link active ">Manage AllBooking</Link>
         </li>
-      </ul>
-      <form className="d-flex">
-      <span className="ms-3 fw-bold fs-5 text-light">{user.displayName}</span>
-       <img width="60px" className="rounded-circle mx-3" src={user.photoURL} alt="" />
+        </ul> }
+      <span className="ms-3 fw-bold fs-5 text-light mt-1">{user?.displayName}</span>
+       <img width="60px" className="rounded-circle mx-3" src={user?.photoURL} alt="" />
 
-  {user.email? <button onClick={SignOut} style={{height:'40px'}} className="btn btn-outline-success text-light" >LogOut</button> :  <Link to="/login"><button className="btn btn-outline-success text-light" >Login</button></Link>}
-<Link to="/register">
-  <button className="btn btn-outline-success text-light mx-4" >Register</button>
-</Link>    
+  {user.email? <button onClick={SignOut} style={{height:'40px'}} className="btn btn-outline-success text-light" >LogOut</button> :  <Link to="/login"><button className="btn btn-outline-success text-light" >Login</button></Link>}   
   </form>
     </div>
   </div>

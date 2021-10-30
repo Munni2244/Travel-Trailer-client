@@ -1,9 +1,75 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router';
+import useAuth from '../Hooks/UseAuth/useAuth';
 
 const BookingPlace = () => {
+    const {user}=useAuth();
+    const { register, handleSubmit } = useForm();
+    const {id}=useParams();
+  const [bookings, setBookings]=useState({});
+
+//get single booking
+  useEffect(()=>{
+      fetch(`http://localhost:5000/booking/${id}`)
+      .then(res=> res.json())
+      .then(data=>{
+          setBookings(data);
+
+      })
+  },[])
+
+  const onSubmit = data => {
+      fetch('http://localhost:5000/addBooking', {
+          method:'POST',
+          headers:{'content-type': 'application/json'},
+          body:JSON.stringify(data)
+      })
+      .then(res=> res.json())
+      .then(data=>{
+         console.log(data);
+      })
+  };
     return (
-        <div>
-            <h1> This Is Booking Place</h1>
+        <div className="container mt-5">
+
+            {/* details */}
+            <div className="row">
+            <div className="col-lg-6 col-12 ">
+                <div className="shadow p-4">
+                    <img width="500px" height="400px" src={bookings.img} alt="" />
+                   <h1>{bookings.name}</h1>
+                   <p>{bookings.desc}</p>
+                   <h3>${bookings.price}</h3>
+                </div>
+            </div>
+
+
+            {/* registration from */}
+            <div className="col-lg-6 col-12">
+            <div className=" d-flex justify-content-center mt-5">
+            <div className=" text-center formStyle py-5">
+            <h1>Registration for Services</h1>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
+             <input {...register("name", { required: true, maxLength: 20 })}  placeholder="Name" defaultValue={user?.displayName}/> <br />
+
+             <input {...register("email", { required: true, maxLength: 20 })}  placeholder="email" defaultValue={user.email}/> <br />
+
+             <input type="text" {...register("title")} placeholder="title" defaultValue={bookings.name} /> <br />
+
+             <input type="date" {...register("date")} placeholder="date" /> <br />
+             
+             <input type="text" {...register("address")} placeholder="address" /> <br />
+             <input {...register("price")} placeholder="price" defaultValue={bookings.price} /> <br />
+             
+             <input type="submit" />
+         </form>
+
+            </div>
+              </div>
+            </div>
+            </div>
         </div>
     );
 };

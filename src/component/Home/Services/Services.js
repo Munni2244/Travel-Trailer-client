@@ -5,10 +5,10 @@ const Services = () => {
     const [services, setServices]=useState([]);
 
     useEffect(()=>{
-        fetch('/fakeData.json')
+        fetch('http://localhost:5000/booking')
         .then(res=>res.json())
         .then(data => setServices(data))
-    },[])
+    },[services])
     return (
         <div style={{marginTop:'100px', marginBottom:'20px' }} className="container ">
             <div className="row g-5 mt-5">

@@ -10,6 +10,7 @@ import AuthProvider from './component/Context/AuthProvider/AuthProvider';
 import Footer from './component/Home/Footer/Footer';
 import AddServices from './component/AddServices/AddServices';
 import NotFound from './component/NotFound/NotFound';
+import PrivateRoute from './component/PraivateRoute/PrivateRoute';
 
 function App() {
   
@@ -31,11 +32,11 @@ function App() {
        <Login></Login>
       </Route>
 
-      <Route path="/mybooking">
+      <PrivateRoute path="/mybooking">
        <MyBooking></MyBooking>
-      </Route>
+      </PrivateRoute>
 
-      <Route path="/bookingplace">
+      <Route path="/bookingplace/:id">
        <BookingPlace></BookingPlace>
       </Route>
 
