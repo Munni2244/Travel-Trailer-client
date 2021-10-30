@@ -12,14 +12,14 @@ const useFirebase=()=>{
     const [isLoading, setIsLoading]=useState(true);
     // const history=useHistory();
     // const location= useLocation();
-    // const url= location.state?.from || "/home";
+    // const url= location.state?.from;
      
     const SignWithGoogle=()=>{
         setIsLoading(true)
         signInWithPopup(auth, GoogleProvider)
           .then(res=>{
             setUser(res.user)
-           
+          //  history.push(url)
         }).catch(error=>{
             console.log(error.message);
         })

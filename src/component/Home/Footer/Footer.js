@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="row p-4 text-light footter">
         
         <div className="col-12 col-md-12 col-lg-3 ms-4 mt-4">
-          <h3>This Is travel Camparing<i class="fas fa-walking text-warning"></i></h3>
+          <h3>This Is travel Camparing<i className="fas fa-walking text-warning"></i></h3>
           <p><span>
         Based in Utah, USA, Wanderland is a blog by Markus Thompson. His posts
         explore outdoor experiences through photos and diaries with tips & tricks.</span></p>
@@ -28,10 +28,10 @@ const Footer = () => {
       <div className="col-12 col-md-12 col-lg-2 mt-4 footer-text">
         <h2>Catagories</h2>
         <ul>
-          <Link href=""><li>Enviroment</li>
+          <li>Enviroment</li>
           <li> Life Style</li>
           <li>  Ruls</li>
-          <li> Motivate</li></Link>
+          <li> Motivate</li>
         </ul>
       </div>
     

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
 import './AddServices.css';
 
 const AddServices = () => {
@@ -11,9 +12,14 @@ const AddServices = () => {
             headers:{'content-type': 'application/json'},
             body: JSON.stringify(data)
         })
-        .then(res =>res.json(data))
+        .then(res =>res.json())
         .then(data=> {
-          console.log(data);
+            if(data.acknowledged){
+                Swal.fire(
+                    'Good job!',
+                    'Posted Successfully!'
+                  )
+            }
         })
     };
 

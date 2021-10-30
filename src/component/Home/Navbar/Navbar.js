@@ -18,12 +18,12 @@ const Navbar = () => {
         <li className="nav-item">
           <Link to="/home" className="nav-link active" aria-current="page" href="#">Home</Link>
         </li>
-        <li className="nav-item">
-          <Link to="/addServices" className="nav-link active ">AddServices</Link>
-        </li>
       </ul>
       <form className="d-flex">
         {user.email &&  <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <li className="nav-item">
+          <Link to="/addServices" className="nav-link active ">AddServices</Link>
+        </li>
           <li className="nav-item">
           <Link to="/mybooking" className="nav-link active" href="#">My Booking</Link>
         </li>

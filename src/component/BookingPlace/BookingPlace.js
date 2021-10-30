@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
+import Swal from 'sweetalert2';
 import useAuth from '../Hooks/UseAuth/useAuth';
 
 const BookingPlace = () => {
@@ -20,6 +21,9 @@ const BookingPlace = () => {
   },[])
 
   const onSubmit = data => {
+      data.status='Pending';
+      data.title=`${bookings.name}`;
+      data.price=`${bookings.price}`
       fetch('http://localhost:5000/addBooking', {
           method:'POST',
           headers:{'content-type': 'application/json'},
@@ -27,9 +31,17 @@ const BookingPlace = () => {
       })
       .then(res=> res.json())
       .then(data=>{
+          if(data.acknowledged){
+            Swal.fire(
+                'Good job!',
+                'Posted Successfully!'
+              )
+          }
+        
          console.log(data);
       })
   };
+
     return (
         <div className="container mt-5">
 
@@ -44,33 +56,25 @@ const BookingPlace = () => {
                 </div>
             </div>
 
-
-            {/* registration from */}
             <div className="col-lg-6 col-12">
-            <div className=" d-flex justify-content-center mt-5">
+         <div className=" d-flex justify-content-center mt-5">
             <div className=" text-center formStyle py-5">
-            <h1>Registration for Services</h1>
-
+            <h1>Add A Service</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
-             <input {...register("name", { required: true, maxLength: 20 })}  placeholder="Name" defaultValue={user?.displayName}/> <br />
-
-             <input {...register("email", { required: true, maxLength: 20 })}  placeholder="email" defaultValue={user.email}/> <br />
-
-             <input type="text" {...register("title")} placeholder="title" defaultValue={bookings.name} /> <br />
-
+              <input {...register("name")}  placeholder="Name" defaultValue={user? user.displayName : ''}/> <br />
+            <input {...register("email")}  placeholder="email" defaultValue={user? user.email : ''}/> <br />
+      
+                <input type="text" {...register("address")} placeholder="Address"  /> <br />
              <input type="date" {...register("date")} placeholder="date" /> <br />
-             
-             <input type="text" {...register("address")} placeholder="address" /> <br />
-             <input {...register("price")} placeholder="price" defaultValue={bookings.price} /> <br />
-             
              <input type="submit" />
-         </form>
+    </form>
+
+            </div>
+        </div>
 
             </div>
               </div>
             </div>
-            </div>
-        </div>
     );
 };
 
