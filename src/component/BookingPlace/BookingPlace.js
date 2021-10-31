@@ -36,6 +36,7 @@ const BookingPlace = () => {
                 'Good job!',
                 'Booking Successfully!'
               )
+            
           }
         
          console.log(data);

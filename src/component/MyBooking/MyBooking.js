@@ -5,45 +5,48 @@ import useAuth from '../Hooks/UseAuth/useAuth';
 const MyBooking = () => {
     const {user}=useAuth();
     const [myBooking, setMyBooking]=useState([]);
-    const [isdelete, setIsDelete]=useState(null);
     useEffect(()=>{
         fetch(`https://dark-shadow-34666.herokuapp.com/addBooking/${user?.email}`)
         .then(res=> res.json())
         .then(data=>setMyBooking(data))
-    },[user.email,isdelete])
+    },[user.email,myBooking])
 
     //delete data
     const CancelBooking=(id)=>{
-        fetch(`https://dark-shadow-34666.herokuapp.com/deleteBooking/${id}`,{
-            method:'DELETE'
-        })
-        .then(res=> res.json())
-        .then(data =>{
-            if(data.acknowledged){
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-            
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                      Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                      )
-                    }
-                  })
-                  setIsDelete(true);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+    
+          }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://dark-shadow-34666.herokuapp.com/deleteBooking/${id}`,{
+                        method:'DELETE'
+                    })
+                    .then(res=> res.json())
+                    .then(data =>{
+                        if(data.acknowledged){
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                              )
+                           
+                        }
+                        else{
+                            Swal.fire(
+                                'Delete Cancel'
+                              )
+                            
+                        }
+             })
             }
-            else{
-                setIsDelete(false)
-            }
-        })
+          })
+        
     }
     return (
         <div className="m-3">

@@ -3,49 +3,50 @@ import Swal from 'sweetalert2';
 
 const ManageBooking = () => {
     const [allBooking, setAllBooking]= useState([]);
-    const [isdelete, setIsDelete]=useState(false);
-
     useEffect(()=>{
         fetch('https://dark-shadow-34666.herokuapp.com/addBooking')
         .then(res=> res.json())
         .then(data=>setAllBooking(data))
-    },[isdelete])
+    },[allBooking])
 
     ////cancel booking
     const CancelBooking=(id)=>{
-        setIsDelete(false)
-        fetch(`https://dark-shadow-34666.herokuapp.com/deleteAllBooking/${id}`,{
-            method:'DELETE'
-        })
-        .then(res=> res.json())
-        .then(data =>{
-            if(data.acknowledged){
+        Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
                 
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-            
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                      Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                      )
-                    }
-                    setIsDelete(true);
-                  })
-            }
-            else{
-                setIsDelete(false)
-            }
-        })
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            fetch(`https://dark-shadow-34666.herokuapp.com/deleteAllBooking/${id}`,{
+                                    method:'DELETE'
+                                })
+                                .then(res=> res.json())
+                                .then(data =>{
+                                    if(data.acknowledged){
+                                        Swal.fire(
+                                            'Deleted!',
+                                            'Your file has been deleted.',
+                                            'success'
+                                          )
+                                       
+                                    }
+                                    else{
+                                        Swal.fire(
+                                            'Delete Cancel'
+                                          )
+                                        
+                                    }
+                                })
+                        }
+                      })
+                     
     }
+    // 
 
     ///update Booking
     const ApproveBooking=(id)=>{
