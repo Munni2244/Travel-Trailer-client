@@ -7,7 +7,7 @@ const AddServices = () => {
     const { register, handleSubmit } = useForm();
 
     const onSubmit = data => {
-        fetch('http://localhost:5000/booking', {
+        fetch('https://dark-shadow-34666.herokuapp.com/booking', {
             method: "POST",
             headers:{'content-type': 'application/json'},
             body: JSON.stringify(data)
@@ -17,7 +17,7 @@ const AddServices = () => {
             if(data.acknowledged){
                 Swal.fire(
                     'Good job!',
-                    'Posted Successfully!'
+                    'Added Successfully!'
                   )
             }
         })

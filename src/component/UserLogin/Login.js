@@ -7,9 +7,9 @@ const Login = () => {
 const {SignWithGoogle, setUser, setIsLoading}= useAuth();
 const history=useHistory();
 const location= useLocation();
-const url= location.state?.from || '/home';
+const url= location.state?.from || "/home";
 
-  function SignInGoogle() {
+  const SignInGoogle=() =>{
     SignWithGoogle()
       .then(res => {
         setUser(res.user);
@@ -23,7 +23,7 @@ const url= location.state?.from || '/home';
     return (
       <div className="d-flex justify-content-center align-items-center  ">
             <div className="text-center mt-5 login-box ">
-            <button onClick={SignInGoogle} >Sign In Google</button>
+            <button onClick={SignInGoogle} ><i className="fab fa-google-plus-g text-primary"></i> Sign In Google</button>
         </div>
       </div>
     );

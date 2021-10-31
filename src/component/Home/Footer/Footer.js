@@ -14,6 +14,11 @@ const Footer = () => {
           <p><span>
         Based in Utah, USA, Wanderland is a blog by Markus Thompson. His posts
         explore outdoor experiences through photos and diaries with tips & tricks.</span></p>
+       <div className="d-flex">
+       <h1><i className="fab fa-google text-primary "></i></h1>
+      <h1> <i className="fab fa-twitter text-warning mx-3"></i></h1>
+      <h1><i className="fab fa-youtube text-danger"></i></h1>
+       </div>
         </div>
         <div className="col-12 col-md-12 col-lg-3 mt-4 footer-text">
         <h3>Contact</h3>
@@ -45,7 +50,7 @@ const Footer = () => {
     </div>
     </section>
     <footer style={{backgroundColor:'rgb(17, 52, 53)'}} className="col-12 text-center text-light py-3">
-      <small >&copy;Copyright 2021 24july United  proggress</small>
+      <small >&copy;Copyright 2021 Travel Trailer  proggress</small>
     </footer>
   
         </div>

@@ -3,23 +3,24 @@ import Swal from 'sweetalert2';
 
 const ManageBooking = () => {
     const [allBooking, setAllBooking]= useState([]);
-    const [isdelete, setIsDelete]=useState(null);
+    const [isdelete, setIsDelete]=useState(false);
 
     useEffect(()=>{
-        fetch('http://localhost:5000/addBooking')
+        fetch('https://dark-shadow-34666.herokuapp.com/addBooking')
         .then(res=> res.json())
         .then(data=>setAllBooking(data))
-    },[isdelete, allBooking])
+    },[isdelete])
 
     ////cancel booking
     const CancelBooking=(id)=>{
         setIsDelete(false)
-        fetch(`http://localhost:5000/deleteAllBooking/${id}`,{
+        fetch(`https://dark-shadow-34666.herokuapp.com/deleteAllBooking/${id}`,{
             method:'DELETE'
         })
         .then(res=> res.json())
         .then(data =>{
             if(data.acknowledged){
+                
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -37,8 +38,8 @@ const ManageBooking = () => {
                         'success'
                       )
                     }
+                    setIsDelete(true);
                   })
-                  setIsDelete(true);
             }
             else{
                 setIsDelete(false)
@@ -48,20 +49,19 @@ const ManageBooking = () => {
 
     ///update Booking
     const ApproveBooking=(id)=>{
-        fetch(`http://localhost:5000/approveBookig/${id}`,{
+        fetch(`https://dark-shadow-34666.herokuapp.com/approveBookig/${id}`,{
             method:"PUT",
-            // headers:{"content-type": "application/json"},
-            // body:JSON.stringify(id)
         })
         .then(res=> res.json())
         .then(data=>console.log(data))
 
     }
     return (
-        <div>
+        <div >
             <div className="m-3">
             <h1 className="text-center text-danger mb-4">All Bookings</h1>
-            <table className="table table-dark table-hover">
+           <div className="table-responsive">
+           <table className="table table-dark table-hover">
         <thead>
          <tr>
           <th scope="col">#</th>
@@ -96,6 +96,7 @@ const ManageBooking = () => {
      )
             }
     </table>
+           </div>
           
         </div>
         </div>

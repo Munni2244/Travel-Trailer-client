@@ -7,7 +7,7 @@ const Navbar = () => {
   const {user, SignOut}= useAuth();
     return (
         <div>
-            <nav style={{backgroundColor:'darkslategrey'}} className="navbar navbar-expand-lg navbar-dark p-3  ">
+            <nav style={{backgroundColor:'darkslategrey'}} className="navbar navbar-expand-lg  navbar-dark p-3  ">
   <div className="container-fluid">
     <Link  to="/home" className="navbar-brand fw-bold me-5" href="#"> TraVeL <span style={{color:'goldenrod'}}>TriLerR</span></Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -7,14 +7,14 @@ const MyBooking = () => {
     const [myBooking, setMyBooking]=useState([]);
     const [isdelete, setIsDelete]=useState(null);
     useEffect(()=>{
-        fetch(`http://localhost:5000/addBooking/${user?.email}`)
+        fetch(`https://dark-shadow-34666.herokuapp.com/addBooking/${user?.email}`)
         .then(res=> res.json())
         .then(data=>setMyBooking(data))
     },[user.email,isdelete])
 
     //delete data
     const CancelBooking=(id)=>{
-        fetch(`http://localhost:5000/deleteBooking/${id}`,{
+        fetch(`https://dark-shadow-34666.herokuapp.com/deleteBooking/${id}`,{
             method:'DELETE'
         })
         .then(res=> res.json())
@@ -48,6 +48,7 @@ const MyBooking = () => {
     return (
         <div className="m-3">
             <h1 className="text-center text-danger mb-4">My Bookings</h1>
+            <div className="table-responsive">
             <table className="table table-success table-hover">
         <thead>
          <tr>
@@ -83,6 +84,7 @@ const MyBooking = () => {
      )
             }
     </table>
+            </div>
           
         </div>
     );

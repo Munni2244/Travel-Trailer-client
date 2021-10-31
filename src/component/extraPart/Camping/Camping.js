@@ -7,7 +7,7 @@ const Camping = () => {
         <div style={{marginTop:'120px', marginBottom:'70px'}} className="container ">
             <div className="row ">
                 <div className="col-lg-7 col-md-12 col-12">
-                    <img width="600px"height="400px" src={img} alt="" />
+                    <img className="img-fluid" width="600px"height="400px" src={img} alt="" />
                 </div>
                 <div className="col-lg-5 col-md-12 col-12">
                     <h1>Camping Experience</h1>

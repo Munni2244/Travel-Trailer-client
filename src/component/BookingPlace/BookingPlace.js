@@ -12,7 +12,7 @@ const BookingPlace = () => {
 
 //get single booking
   useEffect(()=>{
-      fetch(`http://localhost:5000/booking/${id}`)
+      fetch(`https://dark-shadow-34666.herokuapp.com/booking/${id}`)
       .then(res=> res.json())
       .then(data=>{
           setBookings(data);
@@ -24,7 +24,7 @@ const BookingPlace = () => {
       data.status='Pending';
       data.title=`${bookings.name}`;
       data.price=`${bookings.price}`
-      fetch('http://localhost:5000/addBooking', {
+      fetch('https://dark-shadow-34666.herokuapp.com/addBooking', {
           method:'POST',
           headers:{'content-type': 'application/json'},
           body:JSON.stringify(data)
@@ -34,7 +34,7 @@ const BookingPlace = () => {
           if(data.acknowledged){
             Swal.fire(
                 'Good job!',
-                'Posted Successfully!'
+                'Booking Successfully!'
               )
           }
         
