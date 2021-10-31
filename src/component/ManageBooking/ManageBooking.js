@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
-import useAuth from '../Hooks/UseAuth/useAuth';
 
-const MyBooking = () => {
-    const {user}=useAuth();
-    const [myBooking, setMyBooking]=useState([]);
+const ManageBooking = () => {
+    const [allBooking, setAllBooking]= useState([]);
     const [isdelete, setIsDelete]=useState(null);
-    useEffect(()=>{
-        fetch(`http://localhost:5000/addBooking/${user?.email}`)
-        .then(res=> res.json())
-        .then(data=>setMyBooking(data))
-    },[user.email,isdelete])
 
-    //delete data
+    useEffect(()=>{
+        fetch('http://localhost:5000/addBooking')
+        .then(res=> res.json())
+        .then(data=>setAllBooking(data))
+    },[isdelete, allBooking])
+
+    ////cancel booking
     const CancelBooking=(id)=>{
-        fetch(`http://localhost:5000/deleteBooking/${id}`,{
+        setIsDelete(false)
+        fetch(`http://localhost:5000/deleteAllBooking/${id}`,{
             method:'DELETE'
         })
         .then(res=> res.json())
@@ -45,10 +45,23 @@ const MyBooking = () => {
             }
         })
     }
+
+    ///update Booking
+    const ApproveBooking=(id)=>{
+        fetch(`http://localhost:5000/approveBookig/${id}`,{
+            method:"PUT",
+            // headers:{"content-type": "application/json"},
+            // body:JSON.stringify(id)
+        })
+        .then(res=> res.json())
+        .then(data=>console.log(data))
+
+    }
     return (
-        <div className="m-3">
-            <h1 className="text-center text-danger mb-4">My Bookings</h1>
-            <table className="table table-success table-hover">
+        <div>
+            <div className="m-3">
+            <h1 className="text-center text-danger mb-4">All Bookings</h1>
+            <table className="table table-dark table-hover">
         <thead>
          <tr>
           <th scope="col">#</th>
@@ -63,7 +76,7 @@ const MyBooking = () => {
          </thead>
          {
              
-                myBooking?.map(booking=> 
+                allBooking?.map(booking=> 
                    
         
          <tbody>
@@ -75,7 +88,7 @@ const MyBooking = () => {
             <td>{booking.date}</td>
             <td>{booking.address}</td>
             <td>{booking.price}</td>
-            <td>{booking.status} <button onClick={()=>CancelBooking(booking._id)} className="btn btn-danger ms-1">Cancel</button></td>
+            <td>{booking.status} <button onClick={()=>ApproveBooking(booking._id)} className="btn btn-success">Approve</button> <button  onClick={()=>CancelBooking(booking._id)} className="btn btn-danger ms-1">Cancel</button></td>
            
            </tr>
         </tbody>
@@ -85,7 +98,8 @@ const MyBooking = () => {
     </table>
           
         </div>
+        </div>
     );
 };
 
-export default MyBooking;
+export default ManageBooking;

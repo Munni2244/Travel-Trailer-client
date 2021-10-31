@@ -59,7 +59,7 @@ const BookingPlace = () => {
             <div className="col-lg-6 col-12">
          <div className=" d-flex justify-content-center mt-5">
             <div className=" text-center formStyle py-5">
-            <h1>Add A Service</h1>
+            <h1>Register For Services</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
               <input {...register("name")}  placeholder="Name" defaultValue={user? user.displayName : ''}/> <br />
             <input {...register("email")}  placeholder="email" defaultValue={user? user.email : ''}/> <br />

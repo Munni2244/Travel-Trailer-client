@@ -11,6 +11,8 @@ import Footer from './component/Home/Footer/Footer';
 import AddServices from './component/AddServices/AddServices';
 import NotFound from './component/NotFound/NotFound';
 import PrivateRoute from './component/PraivateRoute/PrivateRoute';
+import ManageBooking from './component/ManageBooking/ManageBooking';
+import Contact from './component/Contact/Contact';
 
 function App() {
   
@@ -36,12 +38,20 @@ function App() {
        <MyBooking></MyBooking>
       </div>
 
+      <div path="/manageBooking">
+      <ManageBooking></ManageBooking>
+      </div>
+
       <PrivateRoute path="/bookingplace/:id">
        <BookingPlace></BookingPlace>
       </PrivateRoute>
 
       <Route path="/addServices">
        <AddServices></AddServices>
+      </Route>
+
+      <Route path="/contact">
+       <Contact></Contact>
       </Route>
 
       <Route path="*">

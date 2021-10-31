@@ -1,6 +1,5 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider,onAuthStateChanged  ,signOut} from "firebase/auth";
 import { useEffect, useState } from "react";
-// import { useHistory, useLocation } from "react-router";
 import Initialization from "../../../firebase/firebase.init";
 
 Initialization()
@@ -10,20 +9,11 @@ const auth = getAuth();
 const useFirebase=()=>{
     const [user, setUser]=useState({});
     const [isLoading, setIsLoading]=useState(true);
-    // const history=useHistory();
-    // const location= useLocation();
-    // const url= location.state?.from;
      
     const SignWithGoogle=()=>{
         setIsLoading(true)
-        signInWithPopup(auth, GoogleProvider)
-          .then(res=>{
-            setUser(res.user)
-          //  history.push(url)
-        }).catch(error=>{
-            console.log(error.message);
-        })
-        .finally(()=> setIsLoading(false))
+      return signInWithPopup(auth, GoogleProvider)
+    
     }
 
     //statechange
@@ -53,7 +43,8 @@ const useFirebase=()=>{
         user,
         isLoading,
         SignWithGoogle,
-        SignOut
+        SignOut,
+        setIsLoading
     }
 }
 export default useFirebase;
