@@ -40,6 +40,7 @@ const useFirebase=()=>{
  }
 
     return{
+      setUser,
         user,
         isLoading,
         SignWithGoogle,
